@@ -1,0 +1,18 @@
+FROM node:alpine
+
+EXPOSE 3000
+
+RUN apk add --no-cache git
+
+WORKDIR /home/kkmm
+RUN git clone https://github.com/kakomimasu/viewer.git
+
+ENV SSR_APISERVER_HOST=http://kkmm-server:8880
+ENV NEXT_PUBLIC_APISERVER_HOST=http://localhost:8880
+
+WORKDIR /home/kkmm/viewer
+RUN git pull && \
+  npm install && \
+  npm run build
+
+ENTRYPOINT npm start

@@ -1,0 +1,20 @@
+FROM denoland/deno:alpine-1.16.2
+
+EXPOSE 8880
+
+RUN apk add --no-cache git
+
+RUN deno install -qAf --unstable https://deno.land/x/denon@2.4.10/denon.ts
+
+WORKDIR /home/kkmm
+RUN git clone https://github.com/kakomimasu/server.git
+
+WORKDIR /home/kkmm/server
+RUN git pull && deno cache server.ts
+
+ENV FIREBASE_USERNAME=test@example.com
+ENV FIREBASE_PASSWORD=server-admin
+ENV FIREBASE_TEST=true
+ENV FIREBASE_EMULATOR_HOST=firebase-emulator
+
+ENTRYPOINT denon start

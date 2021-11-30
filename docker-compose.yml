@@ -1,0 +1,25 @@
+version: "3"
+services:
+  firebase-emulator:
+    image: ghcr.io/kakomimasu/firebase-emulator:latest
+    container_name: firebase-emulator
+    # network_mode: "host"
+    ports:
+      - 4000:4000
+      - 8080:8080
+      - 9000:9000
+      - 9099:9099
+  kkmm-server:
+    build:
+      dockerfile: "./Dockerfile.server"
+    container_name: kkmm-server
+    # network_mode: "host"
+    ports:
+      - 8880:8880
+  kkmm-viewer:
+    build:
+      dockerfile: "./Dockerfile.viewer"
+    container_name: kkmm-viewer
+    # network_mode: "host"
+    ports:
+      - 3000:3000
