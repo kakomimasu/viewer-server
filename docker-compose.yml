@@ -17,6 +17,7 @@ services:
     # network_mode: "host"
     ports:
       - 8880:8880
+    tty: true
   kkmm-viewer:
     build:
       context: .
