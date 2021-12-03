@@ -2,7 +2,7 @@ FROM denoland/deno:alpine-1.16.2
 
 EXPOSE 8880
 
-RUN apk add --no-cache git
+RUN apk add --no-cache git curl
 
 RUN deno install -qAf --unstable https://deno.land/x/denon@2.4.10/denon.ts
 
