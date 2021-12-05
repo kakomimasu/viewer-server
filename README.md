@@ -15,6 +15,12 @@ $ docker-compose build  # ビルド
 $ docker-compose up     # 起動
 ```
 
+Docker Toolbox向け
+```console
+$ docker-compose -f docker-compose-toolbox.yml build
+$ docker-compose -f docker-compose-toolbox.yml up
+```
+
 ※ビルド後に[server](https://github.com/kakomimasu/server)や[viewer](https://github.com/kakomimasu/viewer)の最新版を使用する場合は`--no-cache`オプションを付けてビルドしなおす必要があります。
 
 ### client-denoで実際に試合を行ってみる
